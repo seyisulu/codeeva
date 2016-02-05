@@ -1,9 +1,3 @@
-/*
-	Eventually by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 (function() {
 
 	"use strict";
@@ -40,6 +34,9 @@
 					// Images (in the format of 'url': 'alignment').
 						images: {
 							'images/bg01.jpg': 'center',
+							'images/cbg-01.jpg': 'center',
+							'images/cbg-02.jpg': 'center',
+							'images/cbg-03.jpg': 'center',
 							'images/bg02.jpg': 'center',
 							'images/bg03.jpg': 'center'
 						},
@@ -129,7 +126,7 @@
 
 					window.setTimeout(function() {
 						$message._hide();
-					}, 3000);
+					}, 9000);
 
 				};
 
@@ -162,7 +159,7 @@
 								$submit.disabled = false;
 
 							// Show message.
-								$message._show('success', 'Thank you!');
+								$message._show('success', 'Thank you! Please check your inbox.');
 								//$message._show('failure', 'Something went wrong. Please try again.');
 
 						}, 750);
