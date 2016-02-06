@@ -1,10 +1,13 @@
 <?php
+ini_set('date.timezone','Africa/Lagos');
+$when = date('Y-m-d H:i:s');
 $key = isset($_GET['w']) ? trim($_GET['w']) : false;
 $done = false;
 if($key !== false) {
   $db = new SQLite3('codeeva.db');
-  if($stmt = $db->prepare('UPDATE girls SET verified=1 WHERE key=:key')) {
+  if($stmt = $db->prepare('UPDATE girls SET verified=:v WHERE key=:key')) {
     $stmt->bindParam(':key', $key, SQLITE3_TEXT);
+    $stmt->bindParam(':v', $when, SQLITE3_TEXT);
     $rest = $stmt->execute();
   }
   if($stmt = $db->prepare('SELECT email, names, verified FROM girls WHERE key=:key')) {

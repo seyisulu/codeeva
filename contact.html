@@ -1,34 +1,87 @@
-<!--#include virtual="inc/header.html" -->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Contact Codeeva</title>
+    <!--#include virtual="inc/header.html" -->
+  </head>
+  <body>
 
     <!-- Header -->
-      <header id="header">
-        <h1 style="line-height:1.25em;"><img src="images/codeeva.png" alt="Codeeva" style="height:1.25em; max-width:100%;"/>\contact</h1>
-        <p>Codeeva is an initiative developed to bolster female engagement in the Nigerian (and by extension, African) IT industry through training and mentorships.
-        We aim to sustain a community of ladies proficient in bleeding edge development technologies, tools and industry best practices.
-        The scope of the training will include HTML5, CSS3, isomorphic JavaScript development with MeteorJS, NoSQL database modeling using MongoDB, cloud deployments (AWS, Azure, Google Cloud Platform &amp; Heroku) and distributed version control systems.
-      </p>
-        <nav class="cd-stretchy-nav">
-          <a class="cd-nav-trigger" href="#0">
-            <span aria-hidden="true"></span>
-          </a>
-
-          <ul>
-            <li><a href="index.html" class="active"><span>Home</span></a></li>
-            <li><a href="about.html"><span>About</span></a></li>
-            <li><a href="partners.html"><span>Partners</span></a></li>
-            <li><a href="contact.html"><span>Contact</span></a></li>
-          </ul>
-
-          <span aria-hidden="true" class="stretchy-nav-bg"></span>
-        </nav>
-      </header>
+    <header id="header">
+      <h1 style="line-height:1.25em;"><img src="images/codeeva.png" alt="Codeeva" style="height:1.25em; max-width:100%;"/>\contact</h1>
+      <p>Please get in touch, thank you.</p>
+      <!--#include virtual="inc/nav.html" -->
+    </header>
 
 		<!-- Contact Form -->
-			<form id="contact-form" method="post" action="#">
-				<input type="email" name="email" id="email" placeholder="Email Address" />
-				<input type="text" name="name" id="name" placeholder="Full Name" />
-				<textarea></textarea>
-				<input type="submit" value="Send" />
-			</form>
+		<form id="contact-form" method="post" action="#">
+			<input type="email" name="email" id="email" placeholder="Email Address">
+			<input type="text" name="names" id="name" placeholder="Full Name">
+			<textarea name="messg" placeholder="Your Message" > </textarea>
+			<input type="submit" value="Send">
+      <span id="loadn" class="message">Sending...</span>
+		</form>
 
-<!--#include virtual="inc/footer.html" -->
+    <!--#include virtual="inc/footer.html" -->
+    <script type="text/javascript">
+      (function () {
+          // Contact Form.
+        (function() {
+          // Vars.
+            var $form = document.querySelectorAll('#contact-form')[0],
+            $submit = document.querySelectorAll('#contact-form input[type="submit"]')[0],
+            $message;
+          // Bail if addEventListener isn't supported.
+            if (!('addEventListener' in $form))
+              return;
+          // Message.
+            $message = document.createElement('span');
+            $message.classList.add('message');
+            $form.appendChild($message);
+  
+            $message._show = function(type, text) {
+              $message.innerHTML = text;
+              $message.classList.add(type);
+              $message.classList.add('visible');
+              window.setTimeout(function() {
+                $message._hide();
+              }, 9000);
+            };
+    
+            $message._hide = function() {
+              $message.classList.remove('visible');
+            };
+                  // Events.
+            $form.addEventListener('submit', function(event) {
+              event.stopPropagation();
+              event.preventDefault();
+              // Show loading.
+              $("#loadn").addClass("visible");
+              // Hide message.
+              $message._hide();
+              // Disable submit.
+              $submit.disabled = true;
+    
+              var jqxhr = $.post( "talk.php", $( "#contact-form" ).serialize())
+                .done(function(res) {
+                  if (res.status == 200) {
+                    $message._show('success', 'Thank you! We\'ll get in tn touch.');
+                  } else {
+                    $message._show('failure', 'Something went wrong. Please try again later...');
+                  }
+                })
+                .fail(function() {
+                  $message._show('failure', 'Something went wrong. Please try again later.');
+                })
+                .always(function() {
+                  $("#loadn").removeClass("visible");
+                  $form.reset();
+                  $submit.disabled = false;
+                });
+            });
+        })();
+    })();
+    </script>
+    
+  </body>
+</html>

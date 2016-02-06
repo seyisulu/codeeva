@@ -1969,3 +1969,11 @@ keyframes
     transform: translateX(0);
   }
 }
+
+
+
+.partner-logo {
+  height: 128px!important;
+  line-height: 72px!important;
+  padding: 6px!important;
+}
