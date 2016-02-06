@@ -38,6 +38,7 @@
 							'images/cbg-02.jpg': 'center',
 							'images/cbg-03.jpg': 'center',
 							'images/bg02.jpg': 'center',
+              'images/cbg-04.jpg': 'center',
 							'images/bg03.jpg': 'center'
 						},
 
@@ -101,71 +102,24 @@
 
 		})();
 
-	// Signup Form.
-		(function() {
-
-			// Vars.
-				var $form = document.querySelectorAll('#signup-form')[0],
-					$submit = document.querySelectorAll('#signup-form input[type="submit"]')[0],
-					$message;
-
-			// Bail if addEventListener isn't supported.
-				if (!('addEventListener' in $form))
-					return;
-
-			// Message.
-				$message = document.createElement('span');
-					$message.classList.add('message');
-					$form.appendChild($message);
-
-				$message._show = function(type, text) {
-
-					$message.innerHTML = text;
-					$message.classList.add(type);
-					$message.classList.add('visible');
-
-					window.setTimeout(function() {
-						$message._hide();
-					}, 9000);
-
-				};
-
-				$message._hide = function() {
-					$message.classList.remove('visible');
-				};
-
-			// Events.
-			// Note: If you're *not* using AJAX, get rid of this event listener.
-				$form.addEventListener('submit', function(event) {
-
-					event.stopPropagation();
-					event.preventDefault();
-
-					// Hide message.
-						$message._hide();
-
-					// Disable submit.
-						$submit.disabled = true;
-
-					// Process form.
-					// Note: Doesn't actually do anything yet (other than report back with a "thank you"),
-					// but there's enough here to piece together a working AJAX submission call that does.
-						window.setTimeout(function() {
-
-							// Reset form.
-								$form.reset();
-
-							// Enable submit.
-								$submit.disabled = false;
-
-							// Show message.
-								$message._show('success', 'Thank you! Please check your inbox.');
-								//$message._show('failure', 'Something went wrong. Please try again.');
-
-						}, 750);
-
-				});
-
-		})();
-
 })();
+
+jQuery(document).ready(function(){
+	if( $('.cd-stretchy-nav').length > 0 ) {
+		var stretchyNavs = $('.cd-stretchy-nav');
+		
+		stretchyNavs.each(function(){
+			var stretchyNav = $(this),
+				stretchyNavTrigger = stretchyNav.find('.cd-nav-trigger');
+			
+			stretchyNavTrigger.on('click', function(event){
+				event.preventDefault();
+				stretchyNav.toggleClass('nav-is-visible');
+			});
+		});
+
+		$(document).on('click', function(event){
+			( !$(event.target).is('.cd-nav-trigger') && !$(event.target).is('.cd-nav-trigger span') ) && stretchyNavs.removeClass('nav-is-visible');
+		});
+	}
+});

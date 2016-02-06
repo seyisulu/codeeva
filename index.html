@@ -1,44 +1,30 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Codeeva by Blyeenzyme Ltd.</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-	</head>
-	<body>
+<!--#include virtual="inc/header.html" -->
 
-		<!-- Header -->
-			<header id="header">
-				<h1><img src="images/codeeva.png" alt="Codeeva" style="height:1.25em; max-width:100%;"/></h1>
-				<p>Female only development training.</p>
-			</header>
+    <!-- Header -->
+      <header id="header">
+        <h1><img src="images/codeeva.png" alt="Codeeva" style="height:1.25em; max-width:100%;"/></h1>
+        <p>Female focused modern development training.</p>
+        <nav class="cd-stretchy-nav">
+          <a class="cd-nav-trigger" href="#0">
+            <span aria-hidden="true"></span>
+          </a>
+
+          <ul>
+            <li><a href="index.html" class="active"><span>Home</span></a></li>
+            <li><a href="about.html"><span>About</span></a></li>
+            <li><a href="partners.html"><span>Partners</span></a></li>
+            <li><a href="contact.html"><span>Contact</span></a></li>
+          </ul>
+
+          <span aria-hidden="true" class="stretchy-nav-bg"></span>
+        </nav>
+      </header>
 
 		<!-- Signup Form -->
 			<form id="signup-form" method="post" action="#">
 				<input type="email" name="email" id="email" placeholder="Email Address" />
-				<input type="text" name="name" id="name" placeholder="Full Name" />
-				<input type="submit" value="Sign Up" />
+				<input type="text" name="names" id="names" placeholder="Full Name" />
+				<input type="submit" value="Join" />
 			</form>
 
-		<!-- Footer -->
-			<footer id="footer">
-				<ul class="icons">
-					<li><a href="https://twitter.com/codeeva_" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-					<li><a href="https://www.instagram.com/codeeva/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-				</ul>
-				<ul class="copyright">
-					<li>&copy; 2016.</li><li>Design + Development := <a href="https://www.blueenzyme.com/">Blueenzyme Ltd.</a></li>
-				</ul>
-			</footer>
-
-		<!-- Scripts -->
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/jquery-1.12.0.min.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
-</html>
+<!--#include virtual="inc/footer-home.html" -->
