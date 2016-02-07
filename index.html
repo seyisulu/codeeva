@@ -8,11 +8,14 @@
 
     <!-- Header -->
     <header id="header">
-      <h1><img src="images/codeeva.png" alt="Codeeva" style="height:1.25em; max-width:100%;"/></h1>
+      <h1><img src="images/codeeva.png" alt="Codeeva" style="height:1.25em; max-width:100%;"/>\<span id="codeeva-clock"> </span>
+        </h1>
       <p>Female focused modern development training.</p>
       <!--#include virtual="inc/nav.html" -->
     </header>
-
+    
+    
+    
 		<!-- Signup Form -->
 		<form id="signup-form" method="post" action="#">
 			<input type="email" name="email" id="email" placeholder="Email Address" />
@@ -22,6 +25,7 @@
 		</form>
 
     <!--#include virtual="inc/footer.html" -->
+    <script src="assets/js/jquery.countdown.min.js"></script>
     <script type="text/javascript">
       (function () {
           // Join Form.
@@ -74,7 +78,17 @@
                 $submit.disabled = false;
               });
             });
+            
+            
         })();
+        //Counter
+        $("#codeeva-clock")
+        .countdown("2016/02/20", function(event) {
+          $(this).text(
+            event.strftime('%D days %H:%M:%S')
+          );
+        });
+        
     })();
     </script>
       
