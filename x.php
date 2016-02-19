@@ -19,7 +19,7 @@ while ($dat = $res->fetchArray(SQLITE3_ASSOC)) {
       <h1 style="line-height:1.25em;"><img src="images/codeeva.png" alt="Codeeva" style="height:1.25em; max-width:100%;"/>\registrations</h1>
       <p></p>
       
-      <table class="flat-table flat-table-3">
+      <table class="">
         <thead>
           <th>Names</th>
           <th>Emails</th>
