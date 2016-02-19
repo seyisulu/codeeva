@@ -1972,6 +1972,11 @@ keyframes
 
 
 
+.team-pix {
+  height: 320px!important;
+  line-height: 320px!important;
+  padding: 6px!important;
+}
 .partner-logo {
   height: 128px!important;
   line-height: 72px!important;
